@@ -1,0 +1,15 @@
+<idea-plugin>
+    <id>me.filby.rs2asm</id>
+    <name>Rs2Asm</name>
+    <vendor>Joshua Filby</vendor>
+
+    <!-- Product and plugin compatibility requirements -->
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Register the Rs2Asm file type to IntelliJ -->
+        <fileType name="Rs2Asm" implementationClass="me.filby.rs2asm.Rs2AsmFileType"
+                  fieldName="INSTANCE" language="Rs2Asm" extensions="rs2asm" />
+    </extensions>
+</idea-plugin>
