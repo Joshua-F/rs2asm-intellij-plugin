@@ -19,5 +19,8 @@
                                        implementationClass="me.filby.rs2asm.editor.Rs2AsmHighlighterFactory"/>
 
         <annotator language="Rs2Asm" implementationClass="me.filby.rs2asm.editor.Rs2AsmHighlightAnnotator"/>
+
+        <completion.contributor language="Rs2Asm"
+                                implementationClass="me.filby.rs2asm.editor.completion.Rs2AsmCompletionContributor"/>
     </extensions>
 </idea-plugin>

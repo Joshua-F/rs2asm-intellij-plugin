@@ -14,6 +14,8 @@ import net.runelite.cache.script.assembler.rs2asmLexer
 import net.runelite.cache.script.assembler.rs2asmParser
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
+import org.antlr.intellij.adaptor.lexer.RuleIElementType
+import org.antlr.intellij.adaptor.lexer.TokenIElementType
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
 import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
@@ -57,6 +59,9 @@ class Rs2AsmParserDefinition : ParserDefinition {
                 rs2asmParser.ruleNames
             )
         }
+
+        val tokens: List<TokenIElementType> = PSIElementTypeFactory.getTokenIElementTypes(Rs2AsmLanguage.INSTANCE)
+        val rules: List<RuleIElementType> = PSIElementTypeFactory.getRuleIElementTypes(Rs2AsmLanguage.INSTANCE)
 
         private val FILE = IFileElementType(Rs2AsmLanguage.INSTANCE)
 
