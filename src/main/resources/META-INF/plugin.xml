@@ -6,6 +6,7 @@
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Register the Rs2Asm file type to IntelliJ -->
@@ -16,5 +17,7 @@
 
         <lang.syntaxHighlighterFactory language="Rs2Asm"
                                        implementationClass="me.filby.rs2asm.editor.Rs2AsmHighlighterFactory"/>
+
+        <annotator language="Rs2Asm" implementationClass="me.filby.rs2asm.editor.Rs2AsmHighlightAnnotator"/>
     </extensions>
 </idea-plugin>

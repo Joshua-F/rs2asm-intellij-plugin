@@ -1,0 +1,64 @@
+package me.filby.rs2asm.editor
+
+import com.intellij.lang.annotation.AnnotationHolder
+import com.intellij.lang.annotation.Annotator
+import com.intellij.lang.annotation.HighlightSeverity
+import com.intellij.psi.PsiElement
+import me.filby.rs2asm.psi.Rs2AsmInstructionName
+import me.filby.rs2asm.psi.Rs2AsmLabel
+import me.filby.rs2asm.psi.Rs2AsmOperandLabel
+import net.runelite.cache.script.Instruction
+import net.runelite.cache.script.Instructions
+
+class Rs2AsmHighlightAnnotator : Annotator {
+    override fun annotate(element: PsiElement, holder: AnnotationHolder) {
+        when (element) {
+            is Rs2AsmLabel -> {
+                holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+                    .textAttributes(Rs2AsmHighlighter.DEC_LABEL)
+                    .create()
+            }
+            is Rs2AsmInstructionName -> annotateInstructionName(element, holder)
+            is Rs2AsmOperandLabel -> {
+                holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+                    .textAttributes(Rs2AsmHighlighter.LABEL)
+                    .create()
+            }
+        }
+    }
+
+    /**
+     * Handles highlighting instruction names for errors or normal highlight.
+     */
+    private fun annotateInstructionName(
+        element: Rs2AsmInstructionName,
+        holder: AnnotationHolder
+    ) {
+        val name = element.text
+        val nameAsInt = name.toIntOrNull()
+
+        if (nameAsInt != null) {
+            // TODO should probably be an inspection
+            val instruction: Instruction? = INSTRUCTIONS.find(nameAsInt)
+            if (instruction != null) {
+                holder.newAnnotation(
+                    HighlightSeverity.WARNING,
+                    "Instruction has a proper name: ${instruction.name}"
+                )
+                    .create()
+            }
+        } else if (INSTRUCTIONS.find(name) == null) {
+            holder.newAnnotation(HighlightSeverity.ERROR, "Instruction does not exist.")
+                .create()
+            return
+        }
+
+        holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+            .textAttributes(Rs2AsmHighlighter.INSTRUCTION_NAME)
+            .create()
+    }
+
+    companion object {
+        private val INSTRUCTIONS = Instructions().apply { init() }
+    }
+}

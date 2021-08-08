@@ -41,5 +41,11 @@ class Rs2AsmHighlighter : SyntaxHighlighterBase() {
             DefaultLanguageHighlighterColors.IDENTIFIER)
         private val COMMENT = createTextAttributesKey("RS2ASM_COMMENT",
             DefaultLanguageHighlighterColors.LINE_COMMENT)
+        val LABEL = createTextAttributesKey("RS2ASM_LABEL",
+            DefaultLanguageHighlighterColors.FUNCTION_DECLARATION)
+        val DEC_LABEL = createTextAttributesKey("RS2ASM_DEC_LABEL",
+            LABEL)
+        val INSTRUCTION_NAME = createTextAttributesKey("RS2ASM_INSTRUCTION_NAME",
+            DefaultLanguageHighlighterColors.KEYWORD)
     }
 }

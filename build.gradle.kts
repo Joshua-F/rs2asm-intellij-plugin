@@ -20,10 +20,15 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    maven("https://repo.runelite.net")
 }
 
 dependencies {
     implementation("org.antlr", "antlr4-intellij-adaptor", "0.1")
+    implementation("net.runelite", "cache", "1.7.19") {
+        // we only care about the rs2asmParser
+        exclude("net.runelite", "http-api")
+    }
 }
 
 // Configure gradle-intellij-plugin plugin.
