@@ -47,8 +47,8 @@ class Rs2AsmHighlightAnnotator : Annotator {
                 )
                     .create()
             }
-        } else if (INSTRUCTIONS.find(name) == null) {
-            holder.newAnnotation(HighlightSeverity.ERROR, "Instruction does not exist.")
+        } else if (INSTRUCTIONS.find(name) == null && name != RUNELITE_CALLBACK_INSTRUCTION) {
+            holder.newAnnotation(HighlightSeverity.ERROR, "$name is not a valid instruction name.")
                 .create()
             return
         }
@@ -59,6 +59,7 @@ class Rs2AsmHighlightAnnotator : Annotator {
     }
 
     companion object {
+        private const val RUNELITE_CALLBACK_INSTRUCTION = "runelite_callback"
         private val INSTRUCTIONS = Instructions().apply { init() }
     }
 }
