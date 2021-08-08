@@ -12,6 +12,8 @@ plugins {
     id("org.jetbrains.intellij") version "1.1.4"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
     id("org.jetbrains.changelog") version "1.2.1"
+    // Antlr support
+    id("antlr")
 }
 
 group = properties("pluginGroup")
@@ -24,9 +26,11 @@ repositories {
 }
 
 dependencies {
+    antlr("org.antlr", "antlr4", "4.7.2") {
+        exclude("com.ibm.icu", "icu4j")
+    }
     implementation("org.antlr", "antlr4-intellij-adaptor", "0.1")
     implementation("net.runelite", "cache", "1.7.19") {
-        // we only care about the rs2asmParser
         exclude("net.runelite", "http-api")
     }
 }
@@ -65,6 +69,15 @@ tasks {
 
     wrapper {
         gradleVersion = properties("gradleVersion")
+    }
+
+    compileKotlin {
+        dependsOn("generateGrammarSource")
+    }
+
+    generateGrammarSource {
+        arguments = arguments + listOf("-package", "net.runelite.cache.script.assembler", "-Xexact-output-dir")
+        outputDirectory = file("${outputDirectory.canonicalPath}/net/runelite/cache/script/assembler")
     }
 
     patchPluginXml {
