@@ -10,6 +10,11 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Register the Rs2Asm file type to IntelliJ -->
         <fileType name="Rs2Asm" implementationClass="me.filby.rs2asm.Rs2AsmFileType"
-                  fieldName="INSTANCE" language="Rs2Asm" extensions="rs2asm" />
+                  fieldName="INSTANCE" language="Rs2Asm" extensions="rs2asm"/>
+
+        <lang.parserDefinition language="Rs2Asm" implementationClass="me.filby.rs2asm.Rs2AsmParserDefinition"/>
+
+        <lang.syntaxHighlighterFactory language="Rs2Asm"
+                                       implementationClass="me.filby.rs2asm.editor.Rs2AsmHighlighterFactory"/>
     </extensions>
 </idea-plugin>
