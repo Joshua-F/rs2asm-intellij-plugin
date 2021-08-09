@@ -19,8 +19,7 @@ class Rs2AsmOperandLabel(node: ASTNode) : IdentifierDefSubtree(node, tokens[rs2a
         throw IncorrectOperationException()
     }
 
-    override fun getReference(): PsiReference? {
-        val nameIdentifier = nameIdentifier ?: return null
+    override fun getReference(): PsiReference {
         return Rs2AsmLabelReference(this, TextRange(0, this.text.length))
     }
 }

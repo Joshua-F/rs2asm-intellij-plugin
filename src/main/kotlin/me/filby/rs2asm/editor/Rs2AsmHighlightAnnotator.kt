@@ -21,7 +21,7 @@ class Rs2AsmHighlightAnnotator : Annotator {
             is Rs2AsmInstructionName -> annotateInstructionName(element, holder)
             is Rs2AsmOperandLabel -> {
                 // check if the label is resolvable
-                if (element.reference?.resolve() == null) {
+                if (element.reference.resolve() == null) {
                     holder.newAnnotation(HighlightSeverity.ERROR, "Unknown label: ${element.name}")
                         .create()
                     return
