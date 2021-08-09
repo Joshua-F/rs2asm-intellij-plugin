@@ -59,7 +59,8 @@ switch_value: IDENTIFIER ;
 
 NEWLINE: ( '\r' | '\n' )+ ;
 INT: '-'? [0-9]+ ;
-QSTRING: '"' (~('"' | '\\' | '\r' | '\n') | '\\' ('"' | '\\'))* '"' ;
+QUOTE: '"' ;
+QSTRING: QUOTE (~('"' | '\\' | '\r' | '\n') | '\\' ('"' | '\\'))* QUOTE ;
 IDENTIFIER: [a-zA-Z0-9_]+ ;
 COMMENT: ';' ~( '\r' | '\n' )* -> channel(HIDDEN) ;
 
