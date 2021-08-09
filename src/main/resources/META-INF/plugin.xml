@@ -22,5 +22,8 @@
 
         <completion.contributor language="Rs2Asm"
                                 implementationClass="me.filby.rs2asm.editor.completion.Rs2AsmCompletionContributor"/>
+
+        <lang.findUsagesProvider language="Rs2Asm"
+                                 implementationClass="me.filby.rs2asm.editor.Rs2AsmFindUsagesProvider"/>
     </extensions>
 </idea-plugin>
