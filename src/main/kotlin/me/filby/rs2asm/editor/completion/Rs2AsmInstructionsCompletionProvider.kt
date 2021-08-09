@@ -22,7 +22,7 @@ class Rs2AsmInstructionsCompletionProvider : CompletionProvider<CompletionParame
 
     companion object {
         @Suppress("UNCHECKED_CAST")
-        private val instructions = run {
+        private val instructions = kotlin.run {
             // very hacky way to access the backing map of instructions to get their names
             val temp = Instructions().apply { init() }
             val field = temp.javaClass.getDeclaredField("instructions")
