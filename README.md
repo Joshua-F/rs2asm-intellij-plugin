@@ -1,4 +1,4 @@
-# Rs2ssm
+# Rs2Asm
 
 ![Build](https://github.com/Joshua-F/rs2asm-intellij-plugin/workflows/Build/badge.svg)
 <!--
