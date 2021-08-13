@@ -20,6 +20,7 @@
 
         <annotator language="Rs2Asm" implementationClass="me.filby.rs2asm.editor.Rs2AsmHighlightAnnotator"/>
 
+        <lang.commenter language="Rs2Asm" implementationClass="me.filby.rs2asm.editor.Rs2AsmCommenter"/>
         <lang.quoteHandler language="Rs2Asm" implementationClass="me.filby.rs2asm.editor.Rs2AsmQuoteHandler"/>
 
         <completion.contributor language="Rs2Asm"
