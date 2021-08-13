@@ -2,6 +2,7 @@ package me.filby.rs2asm
 
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
+import me.filby.rs2asm.psi.Rs2AsmHeader
 import me.filby.rs2asm.psi.Rs2AsmInstruction
 import me.filby.rs2asm.psi.Rs2AsmInstructionNameInt
 import me.filby.rs2asm.psi.Rs2AsmInstructionNameString
@@ -24,6 +25,7 @@ object Rs2AsmElementFactory {
             return ANTLRPsiNode(node)
         }
         return when (elType.ruleIndex) {
+            rs2asmParser.RULE_header -> Rs2AsmHeader(node)
             rs2asmParser.RULE_instruction -> Rs2AsmInstruction(node)
             rs2asmParser.RULE_label -> Rs2AsmLabel(node)
             rs2asmParser.RULE_name_string -> Rs2AsmInstructionNameString(node)

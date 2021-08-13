@@ -47,5 +47,7 @@ class Rs2AsmHighlighter : SyntaxHighlighterBase() {
             LABEL)
         val INSTRUCTION_NAME = createTextAttributesKey("RS2ASM_INSTRUCTION_NAME",
             DefaultLanguageHighlighterColors.KEYWORD)
+        val HEADER_KEY = createTextAttributesKey("RS2ASM_HEADER_KEY",
+            DefaultLanguageHighlighterColors.METADATA)
     }
 }

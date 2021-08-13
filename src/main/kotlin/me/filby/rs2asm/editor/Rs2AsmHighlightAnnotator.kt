@@ -4,6 +4,7 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.psi.PsiElement
+import me.filby.rs2asm.psi.Rs2AsmHeader
 import me.filby.rs2asm.psi.Rs2AsmInstructionName
 import me.filby.rs2asm.psi.Rs2AsmLabel
 import me.filby.rs2asm.psi.Rs2AsmOperandLabel
@@ -13,6 +14,13 @@ import net.runelite.cache.script.Instructions
 class Rs2AsmHighlightAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         when (element) {
+            is Rs2AsmHeader -> {
+                val headerName = element.findElementAt(0) ?: return
+                holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+                    .textAttributes(Rs2AsmHighlighter.HEADER_KEY)
+                    .range(headerName)
+                    .create()
+            }
             is Rs2AsmLabel -> {
                 holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
                     .textAttributes(Rs2AsmHighlighter.DEC_LABEL)
