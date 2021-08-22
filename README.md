@@ -10,6 +10,12 @@
 This plugin adds some simple features when interacting with `rs2asm` files.
 <!-- Plugin description end -->
 
+## Features
+
+- Syntax highlighting
+- Autocompletion for label names and instructions
+- Find usages of labels
+
 ## Installation
 
 <!--
