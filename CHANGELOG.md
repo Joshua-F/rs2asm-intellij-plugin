@@ -3,6 +3,9 @@
 # Rs2Asm Changelog
 
 ## [Unreleased]
+### Added
+- Support for platform version since `202`
+
 ## [1.0.1]
 ### Added
 - Commenter
